@@ -15,11 +15,11 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;background:#f8f0f0;overflow-x:hidden}
 .main-wrap{max-width:500px;margin:0 auto;padding:28px 20px}
-.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
 .logo{font-size:26px;font-weight:900;color:#1a1a2e;letter-spacing:1px}
 .sub{font-size:11px;color:#aaa;letter-spacing:2px;margin-top:4px}
-.round-badge{position:absolute;left:50%;transform:translateX(-50%);top:20px;
-  background:#1a1a2e;color:#fff;padding:6px 18px;border-radius:20px;font-size:13px;font-weight:700}
+.round-badge{background:#1a1a2e;color:#fff;padding:6px 18px;border-radius:20px;font-size:13px;font-weight:700;
+  text-align:center;margin:0 auto 16px}
 .reset-btn{padding:8px 18px;border-radius:20px;border:1.5px solid #ddd;background:#fff;
   font-size:12px;color:#888;font-weight:600;cursor:pointer;font-family:inherit}
 .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -95,9 +95,9 @@ body{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;back
 .card-front .body{flex:1;display:flex;flex-direction:column;justify-content:center;
   align-items:center;padding:20px 24px;text-align:center}
 .card-front .qmark{font-size:32px;font-weight:900;color:#ddd;margin-bottom:6px}
-.card-front .qt{font-size:21px;font-weight:600;color:#333;line-height:1.7;word-break:keep-all}
+.card-front .qt{font-size:23px;font-weight:600;color:#333;line-height:1.7;word-break:keep-all}
 .card-front .qt .kw{font-weight:900;padding:2px 8px;border-radius:6px}
-.card-front .qt .vs-text{font-weight:900;font-size:22px;line-height:2}
+.card-front .qt .vs-text{font-weight:900;font-size:24px;line-height:2.2}
 .card-front .sep{width:60px;height:2px;margin:16px auto 0;opacity:0.2}
 .card-front .foot{padding:16px 20px 48px;text-align:center}
 .card-front .foot .pr{font-size:10px;font-weight:700;letter-spacing:2px;color:#bbb;margin-bottom:8px}
@@ -109,7 +109,7 @@ body{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;back
 @media(max-width:400px){
   .modal-card{width:320px;height:540px}
   .card-back .name-en{font-size:48px}
-  .card-front .qt{font-size:19px}
+  .card-front .qt{font-size:21px}
   .card-front .foot .ht{font-size:15px}
 }
 @media(min-width:600px){
@@ -120,7 +120,7 @@ body{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;back
   .color-card .remain{font-size:12px;padding:5px 14px}
   .modal-card{width:420px;height:700px}
   .card-back .name-en{font-size:64px}
-  .card-front .qt{font-size:24px}
+  .card-front .qt{font-size:26px}
   .card-front .foot .ht{font-size:18px}
 }
 @media(min-width:900px){
@@ -134,14 +134,14 @@ body{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;back
 </head>
 <body>
 <div class="main-wrap">
-  <div class="header" style="position:relative">
+  <div class="header">
     <div>
       <div class="logo">RAINBOW PRISM</div>
       <div class="sub">TEENAGER'S COLOR THERAPY</div>
     </div>
-    <div class="round-badge" id="roundBadge">1 / 15 회차</div>
     <button class="reset-btn" onclick="resetAll()">↺ 리셋</button>
   </div>
+  <div class="round-badge" id="roundBadge">1 / 15 회차</div>
   <div class="card-grid" id="grid"></div>
 </div>
 
@@ -254,7 +254,7 @@ function draw(c){
   // VS 질문 vs 일반 질문
   var qEl=document.getElementById("frontQ");
   if(d.vs){
-    qEl.innerHTML='<span class="vs-text" style="color:'+cc.text+'">'+d.k+'</span>';
+    qEl.innerHTML='<span class="vs-text" style="color:'+cc.text+'">'+d.k.replace(' VS ','<br><span style="font-size:16px;color:#999;letter-spacing:3px">VS</span><br>')+'</span>';
   }else{
     qEl.innerHTML=d.q+'<span class="kw" style="color:'+cc.text+';background:'+cc.hex+'22">'+d.k+'</span>'+d.a;
   }
